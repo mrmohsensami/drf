@@ -16,3 +16,12 @@ def all(request):
     posts = Post.objects.all()
     ser_data = PostSerializer(posts, many=True)
     return Response(ser_data.data)
+
+@api_view()
+def detail(request, id):
+    try:
+        post = Post.objects.get(id=id)
+    except:
+        return Response({'error': 'this user doese not exist'})
+    ser_data = PostSerializer(post)
+    return Response(ser_data.data)
