@@ -25,3 +25,12 @@ def detail(request, id):
         return Response({'error': 'this user doese not exist'})
     ser_data = PostSerializer(post)
     return Response(ser_data.data)
+
+@api_view(['POST'])
+def create(request):
+    info = PostSerializer(data=request.data)
+    if info.is_valid():
+        Post(title=info.validated_data['title'], body=info.validated_data['body']).save()
+        return Response({'message': 'OK'})
+    else:
+        return Response(info.errors)
