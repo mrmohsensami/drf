@@ -1,6 +1,11 @@
 from rest_framework import serializers
+from .models import Post
 
-class PostSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    title = serializers.CharField()
-    body = serializers.CharField()
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('id', 'title', 'body')
+        # fields = '__all__'
+        extra_kwargs = {
+            'body' : {'write_only': True}
+        }
