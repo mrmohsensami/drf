@@ -1,9 +1,9 @@
-from cmath import inf
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from .serializers import PostSerializer
 from .models import Post
 from rest_framework import status
+from rest_framework.permissions import IsAdminUser
 
 @api_view(['GET', 'POST'])
 def test(request):
@@ -20,6 +20,7 @@ def all(request):
     return Response(ser_data.data, status=status.HTTP_200_OK)
 
 @api_view()
+@permission_classes([IsAdminUser])
 def detail(request, id):
     try:
         post = Post.objects.get(id=id)
