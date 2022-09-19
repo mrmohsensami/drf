@@ -9,3 +9,8 @@ class PostSerializer(serializers.ModelSerializer):
         # extra_kwargs = {
         #     'body' : {'write_only': True}
         # }
+
+    def validate_title(self, value):
+        if value == 'hello':
+            raise serializers.ValidationError('title cant be hello')
+        return value
