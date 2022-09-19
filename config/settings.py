@@ -132,20 +132,20 @@ STATIC_ROOT = '/home/mohsensami/mohsensami/back/static'
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-        # 'rest_framework.throttling.ScopedRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/day',
-        'user': '100/day'
-    }
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     # 'rest_framework.authentication.BasicAuthentication',
-    #     # 'rest_framework.authentication.SessionAuthentication',
-    #     'rest_framework.authentication.TokenAuthentication',
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    #     # 'rest_framework.throttling.ScopedRateThrottle'
     # ],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '10/day',
+    #     'user': '100/day'
+    # },
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+    ],
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',
     # ]
